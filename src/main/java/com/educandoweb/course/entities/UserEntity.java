@@ -1,5 +1,6 @@
 package com.educandoweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serial;
@@ -27,6 +28,7 @@ public class UserEntity implements Serializable {
 
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<OrderEntity> orders = new ArrayList<>();
 
