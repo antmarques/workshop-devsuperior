@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
@@ -25,6 +27,9 @@ public class UserEntity implements Serializable {
 
     private String password;
 
+    @OneToMany(mappedBy = "client")
+    private List<OrderEntity> orders = new ArrayList<>();
+
     public UserEntity(){
     }
 
@@ -35,5 +40,4 @@ public class UserEntity implements Serializable {
         this.phone = phone;
         this.password = password;
     }
-
 }
