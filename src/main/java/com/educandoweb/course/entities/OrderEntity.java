@@ -4,10 +4,13 @@ import com.educandoweb.course.entities.enums.OrderStatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_order")
@@ -33,6 +36,9 @@ public class OrderEntity implements Serializable {
 //    @OneToOne
 //    @JoinColumn(name = "id_payment")
 //    private PaymentEntity payment;
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItemEntity> items = new HashSet<>();
 
     public OrderEntity(){
     }
