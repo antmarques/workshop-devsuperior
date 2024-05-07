@@ -30,6 +30,10 @@ public class OrderEntity implements Serializable {
     @JoinColumn(name = "id_client")
     private UserEntity client;
 
+//    @OneToOne
+//    @JoinColumn(name = "id_payment")
+//    private PaymentEntity payment;
+
     public OrderEntity(){
     }
 
@@ -38,6 +42,7 @@ public class OrderEntity implements Serializable {
         this.moment = moment;
         setStatus(status);
         this.client = client;
+        //this.payment = payment;
     }
 
     public OrderStatusEnum getStatus() {
