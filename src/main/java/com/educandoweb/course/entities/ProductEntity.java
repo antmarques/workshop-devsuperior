@@ -1,5 +1,6 @@
 package com.educandoweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -32,6 +33,9 @@ public class ProductEntity implements Serializable {
     @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "id_product"), inverseJoinColumns = @JoinColumn(name = "id_category"))
     private Set<CategoryEntity> categories = new HashSet<>();
 
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItemEntity> items = new HashSet<>();
+
     public ProductEntity() {
     }
 
@@ -41,5 +45,14 @@ public class ProductEntity implements Serializable {
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
+    }
+
+    @JsonIgnore
+    public Set<OrderEntity> getOrders() {
+        Set<OrderEntity> set = new HashSet<>();
+        for (OrderItemEntity oie: items){
+            set.add(oie.getOrder());
+        }
+        return set;
     }
 }
