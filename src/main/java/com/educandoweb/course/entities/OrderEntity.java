@@ -1,11 +1,9 @@
 package com.educandoweb.course.entities;
 
 import com.educandoweb.course.entities.enums.OrderStatusEnum;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
@@ -47,7 +45,6 @@ public class OrderEntity implements Serializable {
         this.moment = moment;
         setStatus(status);
         this.client = client;
-        //this.payment = payment;
     }
 
     public OrderStatusEnum getStatus() {
