@@ -33,9 +33,8 @@ public class OrderEntity implements Serializable {
     @JoinColumn(name = "id_client")
     private UserEntity client;
 
-//    @OneToOne
-//    @JoinColumn(name = "id_payment")
-//    private PaymentEntity payment;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private PaymentEntity payment;
 
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItemEntity> items = new HashSet<>();
