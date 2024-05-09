@@ -4,11 +4,10 @@ import com.educandoweb.course.entities.UserEntity;
 import com.educandoweb.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,6 +27,14 @@ public class UserResource {
     public ResponseEntity<UserEntity> findById(@PathVariable Long id) {
         UserEntity user = service.findById(id);
         return ResponseEntity.ok().body(user);
+    }
+
+    @PostMapping
+    public ResponseEntity<UserEntity> insert(@RequestBody UserEntity user) {
+        user = service.insert(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+        //Esse comando acima basicamente pega uma referencia do objeto que acabamos de inserir no banco, assim ele nos retorna um código 201 que corresponde a inserção no banco.
+        return ResponseEntity.created(uri).body(user);
     }
 
 }
