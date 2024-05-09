@@ -24,17 +24,11 @@ public class PaymentEntity implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
-    @JsonIgnore
-    @OneToOne
-    @MapsId
-    private OrderEntity order;
-
     public PaymentEntity() {
     }
 
-    public PaymentEntity(Long id, Instant moment, OrderEntity order) {
+    public PaymentEntity(Long id, Instant moment) {
         this.id = id;
         this.moment = moment;
-        this.order = order;
     }
 }

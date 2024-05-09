@@ -2,13 +2,14 @@ package com.educandoweb.course.entities;
 
 import com.educandoweb.course.entities.enums.OrderStatusEnum;
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.MapSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_order")
@@ -31,11 +32,11 @@ public class OrderEntity implements Serializable {
     @JoinColumn(name = "id_client")
     private UserEntity client;
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private PaymentEntity payment;
 
-    @OneToMany(mappedBy = "id.order")
-    private Set<OrderItemEntity> items = new HashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItemEntity> items = new ArrayList<>();
 
     public OrderEntity(){
     }

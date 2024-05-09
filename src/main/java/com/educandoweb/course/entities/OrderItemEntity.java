@@ -16,8 +16,19 @@ public class OrderItemEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
-    private OrderItemPK id = new OrderItemPK();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_product")
+    private ProductEntity product;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_order")
+    private OrderEntity order;
 
     private Integer quantity;
 
@@ -26,28 +37,12 @@ public class OrderItemEntity implements Serializable {
     public OrderItemEntity() {
     }
 
-    public OrderItemEntity(OrderEntity order, ProductEntity product, Integer quantity, Double price) {
-        id.setOrder(order);
-        id.setProduct(product);
+    public OrderItemEntity(Long id, OrderEntity order, ProductEntity product, Integer quantity, Double price) {
+        this.id = id;
+        this.order = order;
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
-    }
-
-    @JsonIgnore
-    public OrderEntity getOrder() {
-        return id.getOrder();
-    }
-
-    public void setOrder(OrderEntity order) {
-        id.setOrder(order);
-    }
-
-    public ProductEntity getProduct() {
-        return id.getProduct();
-    }
-
-    public void setProduct(ProductEntity product) {
-        id.setProduct(product);
     }
 
     public Double getSubTotal() {

@@ -54,19 +54,20 @@ public class TestConfig implements CommandLineRunner {
 
         UserEntity u1 = new UserEntity(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         UserEntity u2 = new UserEntity(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
+        userRepository.saveAll(Arrays.asList(u1, u2));
+
         OrderEntity o1 = new OrderEntity(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatusEnum.PAID, u1);
         OrderEntity o2 = new OrderEntity(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatusEnum.WAITING_PAYMENT, u2);
         OrderEntity o3 = new OrderEntity(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatusEnum.CANCELED, u1);
-        userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
-        OrderItemEntity oi1 = new OrderItemEntity(o1, p1, 2, p1.getPrice());
-        OrderItemEntity oi2 = new OrderItemEntity(o1, p3, 1, p3.getPrice());
-        OrderItemEntity oi3 = new OrderItemEntity(o2, p3, 2, p3.getPrice());
-        OrderItemEntity oi4 = new OrderItemEntity(o3, p5, 2, p5.getPrice());
+        OrderItemEntity oi1 = new OrderItemEntity(null, o1, p1, 2, p1.getPrice());
+        OrderItemEntity oi2 = new OrderItemEntity(null, o1, p3, 1, p3.getPrice());
+        OrderItemEntity oi3 = new OrderItemEntity(null, o2, p3, 2, p3.getPrice());
+        OrderItemEntity oi4 = new OrderItemEntity(null, o3, p5, 2, p5.getPrice());
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
-        PaymentEntity pay1 = new PaymentEntity(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+        PaymentEntity pay1 = new PaymentEntity(null, Instant.parse("2019-06-20T21:53:07Z"));
         o1.setPayment(pay1);
         orderRepository.save(o1);
     }

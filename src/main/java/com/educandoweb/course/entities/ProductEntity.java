@@ -6,7 +6,9 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,10 +33,10 @@ public class ProductEntity implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "id_product"), inverseJoinColumns = @JoinColumn(name = "id_category"))
-    private Set<CategoryEntity> categories = new HashSet<>();
+    private List<CategoryEntity> categories = new ArrayList<>();
 
-    @OneToMany(mappedBy = "id.product")
-    private Set<OrderItemEntity> items = new HashSet<>();
+    @OneToMany(mappedBy = "product")
+    private List<OrderItemEntity> items = new ArrayList<>();
 
     public ProductEntity() {
     }
