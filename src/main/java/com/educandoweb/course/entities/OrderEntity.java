@@ -56,4 +56,12 @@ public class OrderEntity implements Serializable {
             this.status = status.getId();
         }
     }
+
+    public Double getTotal() {
+        Double sum = 0.0;
+        for (OrderItemEntity o: items) {
+            sum += o.getSubTotal();
+        }
+        return sum;
+    }
 }
