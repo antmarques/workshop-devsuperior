@@ -31,7 +31,7 @@ public class TestConfig implements CommandLineRunner {
     private OrderItemRepository orderItemRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) throws Exception { //Criar métodos de instancias dos objetos, para organizar essa classe.
 
         CategoryEntity cat1 = new CategoryEntity(null, "Electronics");
         CategoryEntity cat2 = new CategoryEntity(null, "Books");
