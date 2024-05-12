@@ -53,22 +53,28 @@ public class OrderService {
                 }
             }
         }
+        if (retornoList.isEmpty()) {
+            throw new ResourceNotFoundException(id);
+        }
         return retornoList;
     }
 
     public List<OrderEntity> findByUser(Long id) {
-        List<OrderEntity> retorno = new ArrayList<>();
+        List<OrderEntity> retornoList = new ArrayList<>();
         List<OrderEntity> list = repository.findAll();
         Optional<UserEntity> user = userRepository.findById(id);
         for (OrderEntity oe: user.get().getOrders()) {
             if (oe.getId() != null) {
                 for (OrderEntity order: list) {
                     if (oe.getId().equals(order.getId())) {
-                        retorno.add(oe);
+                        retornoList.add(oe);
                     }
                 }
             }
         }
-        return retorno;
+        if (retornoList.isEmpty()) {
+            throw new ResourceNotFoundException(id);
+        }
+        return retornoList;
     }
 }
