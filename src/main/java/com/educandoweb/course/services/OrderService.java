@@ -6,6 +6,7 @@ import com.educandoweb.course.entities.ProductEntity;
 import com.educandoweb.course.entities.UserEntity;
 import com.educandoweb.course.repositories.OrderRepository;
 import com.educandoweb.course.repositories.ProductRepository;
+import com.educandoweb.course.repositories.UserRepository;
 import com.educandoweb.course.services.exceptions.DatabaseException;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,6 +28,9 @@ public class OrderService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public List<OrderEntity> findAll() {
         return repository.findAll();
     }
@@ -37,19 +41,34 @@ public class OrderService {
     }
 
     public List<OrderEntity> findByProduct(Long id) {
+        List<OrderEntity> retornoList = new ArrayList<>();
         List<OrderEntity> list = repository.findAll();
         Optional<ProductEntity> product = productRepository.findById(id);
         for (OrderItemEntity oie: product.get().getItems()) {
             if (oie.getId() != null) {
                 for (OrderEntity oe: list) {
                     if (Objects.equals(oie.getOrder().getId(), oe.getId())) {
-                        List<OrderEntity> retorno = new ArrayList<>();
-                        retorno.add(oe);
-                        return retorno;
+                        retornoList.add(oe);
                     }
                 }
             }
         }
-        throw new ResourceNotFoundException(id);
+        return retornoList;
+    }
+
+    public List<OrderEntity> findByUser(Long id) {
+        List<OrderEntity> retorno = new ArrayList<>();
+        List<OrderEntity> list = repository.findAll();
+        Optional<UserEntity> user = userRepository.findById(id);
+        for (OrderEntity oe: user.get().getOrders()) {
+            if (oe.getId() != null) {
+                for (OrderEntity order: list) {
+                    if (oe.getId().equals(order.getId())) {
+                        retorno.add(oe);
+                    }
+                }
+            }
+        }
+        return retorno;
     }
 }

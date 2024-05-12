@@ -29,6 +29,12 @@ public class UserResource {
         return ResponseEntity.ok().body(user);
     }
 
+    @GetMapping(value = "/order/{id}")
+    public ResponseEntity<UserEntity> findByOrder(@PathVariable Long id) {
+        UserEntity user = service.findByOrder(id);
+        return ResponseEntity.ok().body(user);
+    }
+
     @PostMapping
     public ResponseEntity<UserEntity> insert(@RequestBody UserEntity user) {
         user = service.insert(user);

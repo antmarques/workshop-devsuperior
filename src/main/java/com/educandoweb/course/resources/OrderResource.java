@@ -32,9 +32,15 @@ public class OrderResource {
         return ResponseEntity.ok().body(user);
     }
 
-    @PostMapping(value = "/{id}")
+    @GetMapping(value = "/product/{id}")
     public ResponseEntity<List<OrderEntity>> findByProduct(@PathVariable Long id) {
         List<OrderEntity> order = service.findByProduct(id);
+        return ResponseEntity.ok().body(order);
+    }
+
+    @GetMapping(value = "/user/{id}")
+    public ResponseEntity<List<OrderEntity>> findByUser(@PathVariable Long id) {
+        List<OrderEntity> order = service.findByUser(id);
         return ResponseEntity.ok().body(order);
     }
 }
