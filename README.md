@@ -33,10 +33,8 @@ venho me especilizando no momento.</p>
 <p>A partir do diagrama de contexto, é possível entender melhor o fluxo da aplicação.</p>
 <img alt="arquitetura-do-projeto" src="img/arquitetura.jpg">
 <h2>Como executar</h2>
-<p>1. Clonar projeto pelo git:</p>
-`git clone https://github.com/antmarques/workshop-devsuperior.git`
-<p>Instalar dependências:</p>
-`mvn clean install`
+<p>1. Clonar projeto pelo git: git clone https://github.com/antmarques/workshop-devsuperior.git</p>
+<p>Instalar dependências: mvn clean install</p>
 <p>Executar aplicação Spring-Boot por meio de alguma IDE, recomendo o InteliJ que está disponível aqui: 
 <a><strong>https://www.jetbrains.com/idea/download/?section=windows</strong></a>.<br>
 Você também vai precisar ter o Java versão 21 na sua máquina, disponível aqui: 
