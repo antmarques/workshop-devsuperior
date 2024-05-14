@@ -1,9 +1,7 @@
 <h1>Gerenciador de pedidos</h1>
-<hr>
 <h2>O que é o Projeto</h2>
 <p>Basicamente, a proposta é criar uma API que faça o gerenciamente de pedidos de um estabelecimento, e também que seja possível ter 
 relatórios dos pedidos com base nos usuários e nos produtos também.</p>
-<hr>
 <h2>Solução</h2>
 <p>Este Projeto tem o objetivo de gerenciar pedidos aonde é possível cadastrar produtos com categorias atreladas a 
 ela, também temos o cadastro de usuários aonde conseguimos ter quais pedidos foram realizados por tal usuário.<br>
@@ -17,7 +15,6 @@ uma estratégia de vendas e entender o que mais é consumido pelos clientes.<br>
 Para desenvolver essa solução utilizei a linguagem Java e o Framework Spring-Boot, além de trabalhar com Banco de Dados em memória, o H2 Database.
 Lembrando que é perfeitamente possível desenvolver essa solução em outras linguagens e frameworks, eu escolhi essa abordagem por que é a linguagem que
 venho me especilizando no momento.</p>
-<hr>
 <h2>Possíveis melhorias </h2>
 <ul>
 <li>Interface de usuário</li>
@@ -25,7 +22,6 @@ venho me especilizando no momento.</p>
 <li>Criptografia de Senha no Banco de Dados</li>
 <li>Implementação de testes Unitários com Mockito</li>
 </ul>
-<hr>
 <h2>Tecnologias utilizadas</h2>
 <ul>
 <li>Java 21 LTS</li>
@@ -33,11 +29,9 @@ venho me especilizando no momento.</p>
 <li>H2 Database</li>
 <li>Postman</li>
 </ul>
-<hr>
 <h2>Arquitetura</h2>
 <p>A partir do diagrama de contexto, é possível entender melhor o fluxo da aplicação.</p>
 <img alt="arquitetura-do-projeto" src="img/arquitetura.jpg">
-<hr>
 <h2>Como executar</h2>
 <p>1. Clonar projeto pelo git:</p>
 ``` 
@@ -53,10 +47,8 @@ Você também vai precisar ter o Java versão 21 na sua máquina, disponível aq
 <a><strong>https://www.oracle.com/br/java/technologies/downloads/#java21</strong></a></p>
 <p>Testar os endpoints pelo navegador com a URL <a>localhost:8080/</a> ou pelo Postman (recomendo o postman) que está 
 disponível aqui (basta criar conta e utilizar pelo navegador mesmo): <a>https://www.postman.com</a></p>
-<hr>
 <h2>Observações</h2>
 <p>É uma aplicação bem simples, até mesmo por que foi a minha primeira aplicação criada do zero com Spring-Boot, 
 planejo fazer algumas melhorias ainda nela, inclusive, se alguém que olhar esse repositório e ver possíveis melhorias 
 que eu não identifiquei, sinta-se a vontade para reportar para mim, tanto pelo meu Linkedim quanto pelo GitHub.</p>
-<hr>
 <h3>Desenvolvido por: Antonio Carlos</h3>
