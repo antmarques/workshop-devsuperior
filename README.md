@@ -36,11 +36,11 @@ venho me especilizando no momento.</p>
 <p>1. Clonar projeto pelo git: git clone https://github.com/antmarques/workshop-devsuperior.git</p>
 <p>2. Instalar dependências: mvn clean install</p>
 <p>3. Executar aplicação Spring-Boot por meio de alguma IDE, recomendo o InteliJ que está disponível aqui: 
-<a><strong>https://www.jetbrains.com/idea/download/?section=windows</strong></a>.<br>
+https://www.jetbrains.com/idea/download/?section=windows.<br>
 Você também vai precisar ter o Java versão 21 na sua máquina, disponível aqui: 
-<a><strong>https://www.oracle.com/br/java/technologies/downloads/#java21</strong></a></p>
-<p>4. Testar os endpoints pelo navegador com a URL <a>localhost:8080/</a> ou pelo Postman (recomendo o postman) que está 
-disponível aqui (basta criar conta e utilizar pelo navegador mesmo): <a>https://www.postman.com</a></p>
+https://www.oracle.com/br/java/technologies/downloads/#java21</p>
+<p>4. Testar os endpoints pelo navegador com a URL localhost:8080/ ou pelo Postman (recomendo o postman) que está 
+disponível aqui (basta criar conta e utilizar pelo navegador mesmo): https://www.postman.com</p>
 <h2>Observações</h2>
 <p>É uma aplicação bem simples, até mesmo por que foi a minha primeira aplicação criada do zero com Spring-Boot, 
 planejo fazer algumas melhorias ainda nela, inclusive, se alguém que olhar esse repositório e ver possíveis melhorias 
